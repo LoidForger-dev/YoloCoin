@@ -58,7 +58,12 @@
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 0 0 0 rgba(244, 180, 0, 0.8); animation: pulse 2s infinite;
     }
-    .logo-pulse img { width: 44px; height: 44px; object-fit: contain; }
+    .logo-pulse img { 
+      width: 44px; 
+      height: 44px; 
+      object-fit: contain;
+      border-radius: 50%;
+    }
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 #F4B400cc; }
       70% { box-shadow: 0 0 0 18px #F4B40000; }
@@ -228,7 +233,8 @@
     <header>
       <div class="logo-container">
         <div class="logo-pulse">
-          <img src="yolo.png" alt="YOLO" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%23F4B400\' /%3E%3Ctext x=\'50\' y=\'70\' font-size=\'70\' text-anchor=\'middle\' fill=\'%230D0D0D\' font-family=\'Arial\' font-weight=\'bold\'%3EY%3C/text%3E%3C/svg%3E'">
+          <!-- Fixed logo path - now pointing to yolo.png in the website folder -->
+          <img src="yolo.png" alt="YOLO Logo">
         </div>
         <span class="logo-text">YOLO</span>
       </div>
@@ -408,4 +414,4 @@
     addMessage("I know everything about YOLO: roadmap phases, tokenomics, CA, narrative, buy links, socials. Ask away!", 'bot');
   </script>
 </body>
-  </html>
+</html>
