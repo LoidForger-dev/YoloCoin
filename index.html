@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YOLO · classic bird · unified gold · meme culture</title>
+  <!-- meta -->
+  <meta name="description" content="YOLO community meme coin: fair launch, fixed supply, culture first. Full roadmap, tokenomics, CA, dual buy buttons, live chart.">
+  <meta name="keywords" content="YOLO, meme coin, solana, pumpfun, jupiter, roadmap, tokenomics, chart">
+  <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23F4B400' /%3E%3Ctext x='50' y='70' font-size='70' text-anchor='middle' fill='%230D0D0D' font-family='Arial' font-weight='bold'%3EY%3C/text%3E%3C/svg%3E">
+  
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- FA icons (using v5 compatibility for bird) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #0D0D0D;
+      color: #e0e0e0;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* particle background */
+    #particles {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;
+    }
+    .particle {
+      position: absolute; background: rgba(244, 180, 0, 0.15); border-radius: 50%;
+      box-shadow: 0 0 12px #F4B40055;
+      animation: floatParticle 18s infinite linear;
+    }
+    @keyframes floatParticle {
+      0% { transform: translateY(110vh) translateX(0); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(-20vh) translateX(40px); opacity: 0; }
+    }
+    .wrapper {
+      position: relative; z-index: 5; max-width: 1200px; margin: 0 auto; padding: 1.5rem 2rem 3rem;
+    }
+
+    /* header with pulse logo + social inline */
+    header {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
+      margin-bottom: 2.5rem; padding: 0.8rem 1.8rem;
+      background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(10px);
+      border-radius: 60px; border: 1px solid #F4B40030; box-shadow: 0 12px 30px -10px black;
+    }
+    .logo-container {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .logo-pulse {
+      width: 56px; height: 56px; background: #0D0D0D; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 0 rgba(244, 180, 0, 0.8); animation: pulse 2s infinite;
+    }
+    .logo-pulse img { width: 44px; height: 44px; object-fit: contain; }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 #F4B400cc; }
+      70% { box-shadow: 0 0 0 18px #F4B40000; }
+      100% { box-shadow: 0 0 0 0 #F4B40000; }
+    }
+    .logo-text {
+      font-family: 'Orbitron', sans-serif; font-size: 2.2rem; font-weight: 800;
+      background: linear-gradient(135deg, #FFC94D, #FF8C00); -webkit-background-clip: text; background-clip: text; color: transparent;
+      letter-spacing: 2px;
+    }
+    .header-mini-social {
+      display: flex; gap: 1.4rem;
+    }
+    .header-mini-social a {
+      color: #FFC94D; font-size: 1.8rem; transition: 0.2s;
+    }
+    .header-mini-social a:hover { color: #00FF9C; transform: translateY(-4px); }
+
+    /* section titles */
+    .section-title {
+      font-family: 'Orbitron', sans-serif; color: #FFC94D; font-size: 2.3rem;
+      margin: 2.5rem 0 1.5rem; border-left: 8px solid #FF8C00; padding-left: 1.5rem;
+    }
+
+    /* cards */
+    .card {
+      background: rgba(13,13,13,0.75); backdrop-filter: blur(8px); border-radius: 32px;
+      padding: 2rem 2rem; border: 1px solid #F4B40025; box-shadow: 0 20px 30px -15px black;
+      transition: 0.2s; margin-bottom: 2rem;
+    }
+    .card:hover { border-color: #F4B40070; box-shadow: 0 0 30px #F4B40020; }
+    .card h2, .card h3 {
+      font-family: 'Orbitron', sans-serif; color: #FFC94D; margin-bottom: 1.5rem;
+      font-size: 2rem; border-left: 5px solid #FF8C00; padding-left: 1rem;
+    }
+
+    /* narrative text */
+    .narrative-text p { margin-bottom: 1rem; font-size: 1.1rem; }
+
+    /* roadmap phases */
+    .phase-list { list-style: none; }
+    .phase-list li {
+      margin-bottom: 1.8rem; border-bottom: 1px solid #2a2a2a; padding-bottom: 1rem;
+    }
+    .phase-list li strong {
+      color: #FFC94D; font-family: 'Orbitron', sans-serif; font-size: 1.3rem; display: block;
+    }
+
+    /* tokenomics grid */
+    .token-grid {
+      display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1rem;
+    }
+    .token-item {
+      background: #121212; border-radius: 24px; padding: 1.5rem; flex: 1 1 240px;
+      border: 1px dashed #F4B40060;
+    }
+    .token-item .label { color: #FFC94D; font-weight: 600; font-size: 1.2rem; }
+    .token-item .value { font-size: 2rem; font-weight: 700; color: white; }
+    .token-note { margin-top: 1rem; color: #aaa; }
+
+    /* chart container */
+    .chart-container {
+      width: 100%; height: 500px; border-radius: 32px; overflow: hidden;
+      background: #0a0a0a; border: 2px solid #F4B40030; margin-bottom: 2rem;
+    }
+    .chart-container iframe { width: 100%; height: 100%; border: 0; }
+
+    /* ca box */
+    .ca-box {
+      background: #121212; border-radius: 40px; padding: 1.5rem 2rem;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 1rem;
+      border: 2px solid #FFC94D30; font-family: 'Poppins', monospace;
+    }
+    .ca-label { color: #FFC94D; font-weight: 600; font-size: 1.2rem; }
+    .ca-address {
+      background: #0a0a0a; padding: 0.5rem 1.5rem; border-radius: 40px;
+      word-break: break-all; font-size: 1.1rem; border: 1px solid #FF8C00; flex:1;
+    }
+    .copy-btn {
+      background: #FFC94D; border: none; border-radius: 40px; padding: 0.7rem 2rem;
+      font-weight: 600; cursor: pointer; transition: 0.2s; color: #0D0D0D;
+    }
+    .copy-btn:hover { background: #FF8C00; }
+
+    /* dual buy buttons */
+    .buy-section {
+      display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin: 2rem 0;
+    }
+    .buy-btn {
+      padding: 1.2rem 3.5rem; font-family: 'Orbitron', sans-serif; font-weight: 700;
+      font-size: 1.5rem; border-radius: 60px; text-decoration: none; transition: 0.25s;
+      box-shadow: 0 12px 30px black; display: inline-flex; align-items: center; gap: 12px;
+    }
+    .btn-pump { background: #FFC94D; color: #0D0D0D; border: 2px solid #FF8C00; }
+    .btn-pump:hover { background: #FF8C00; transform: scale(1.04); box-shadow: 0 0 30px #FFC94D; }
+    .btn-jup {
+      background: linear-gradient(135deg, #FFC94D, #FF8C00); color: #0D0D0D;
+      border: 2px solid #F4B400;
+    }
+    .btn-jup:hover { background: linear-gradient(135deg, #FF8C00, #F4B400); transform: scale(1.04); box-shadow: 0 0 30px #FFC94D; }
+
+    /* SOCIAL SECTION — classic bird, unified gold */
+    .social-block {
+      display: flex; flex-wrap: wrap; gap: 3rem; justify-content: center; margin: 3rem 0;
+    }
+    .social-icon-large {
+      background: #121212; width: 80px; height: 80px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; border: 2px solid #FFC94D;
+      transition: 0.2s; font-size: 2.8rem; text-decoration: none;
+      color: #FFC94D; 
+    }
+    .social-icon-large:hover { border-color: #00FF9C; transform: translateY(-8px); color: #00FF9C; }
+
+    /* footer */
+    footer { text-align: center; color: #777; margin-top: 4rem; padding: 2rem 0; border-top: 1px solid #333; }
+
+    /* toggle chatbot */
+    .chat-toggle-container {
+      position: fixed; bottom: 30px; right: 30px; z-index: 999;
+    }
+    .chat-toggle-btn {
+      background: #F4B400; width: 65px; height: 65px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 2.2rem;
+      color: #0D0D0D; cursor: pointer; box-shadow: 0 8px 25px #F4B40080;
+      transition: 0.2s; border: 2px solid #FFC94D;
+    }
+    .chat-toggle-btn:hover { transform: scale(1.1); background: #FF8C00; }
+    .chat-popup {
+      position: absolute; bottom: 80px; right: 0; width: 360px; max-width: 90vw;
+      background: #121212; border: 2px solid #F4B400; border-radius: 30px;
+      box-shadow: 0 30px 50px black; display: none; flex-direction: column;
+      backdrop-filter: blur(12px);
+    }
+    .chat-popup.show { display: flex; }
+    .chat-header {
+      background: #F4B400; padding: 1rem 1.5rem; border-radius: 27px 27px 0 0;
+      display: flex; justify-content: space-between; color: #0D0D0D; font-weight: 700;
+    }
+    .chat-body {
+      max-height: 350px; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 8px;
+    }
+    .message { padding: 0.7rem 1rem; border-radius: 18px; max-width: 85%; word-break: break-word; }
+    .bot-message { background: #2a2a2a; border-left: 5px solid #F4B400; align-self: flex-start; color: #f0f0f0; }
+    .user-message { background: #FFC94D; color: #0D0D0D; align-self: flex-end; }
+    .chat-input-area { display: flex; padding: 0.7rem; border-top: 1px solid #333; }
+    .chat-input-area input {
+      flex:1; background: #2a2a2a; border: none; padding: 0.7rem 1rem; border-radius: 40px;
+      color: white; outline: 1px solid #F4B400;
+    }
+    .chat-input-area button {
+      background: #FFC94D; border: none; width: 45px; height: 45px; border-radius: 50%; margin-left: 8px;
+      color: #0D0D0D; font-size: 1.3rem; cursor: pointer;
+    }
+
+    @media (max-width:600px) {
+      .wrapper { padding: 1rem; }
+      .logo-text { font-size: 1.6rem; }
+      .ca-address { font-size: 0.9rem; }
+      .chart-container { height: 350px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles"></div>
+  <div class="wrapper">
+    <!-- HEADER (logo + minimal social) all icons gold, classic bird -->
+    <header>
+      <div class="logo-container">
+        <div class="logo-pulse">
+          <img src="yolo.png" alt="YOLO" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%23F4B400\' /%3E%3Ctext x=\'50\' y=\'70\' font-size=\'70\' text-anchor=\'middle\' fill=\'%230D0D0D\' font-family=\'Arial\' font-weight=\'bold\'%3EY%3C/text%3E%3C/svg%3E'">
+        </div>
+        <span class="logo-text">YOLO</span>
+      </div>
+      <div class="header-mini-social">
+        <a href="https://t.me/+Resml7ZJj3RkODNh" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+        <!-- classic bird icon (fa-twitter) -->
+        <a href="https://x.com/Yolocryptotoken" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://discord.gg/bS9tkuTwS" target="_blank"><i class="fab fa-discord"></i></a>
+      </div>
+    </header>
+
+    <!-- ABOUT / NARRATIVE (exactly as provided) -->
+    <div class="section-title">📖 About / Narrative</div>
+    <div class="card narrative-text">
+      <p><strong>Narrative:</strong> YOLO is a community-driven meme coin built around bold action, shared momentum, and internet culture. It represents the spirit of taking chances, showing up early, and enjoying the ride together—without pretending to be something it’s not. YOLO is designed to be simple, transparent, and social-first, embracing the meme economy while empowering its community to shape the culture, narrative, and future direction of the project. No false promises. No over-engineering. Just vibes, memes, and momentum.</p>
+      <p><strong>Vision:</strong> To create a recognizable meme brand that lives across crypto Twitter, Discord, and on-chain culture—where participation matters more than perfection. YOLO aims to become a symbol of early belief, internet-native community, and collective energy over centralized control.</p>
+      <p><strong>Mission:</strong> Build a strong, engaged community around a shared identity. Encourage creativity through memes, content, and participation. Keep the project transparent, fair, and accessible. Let the community drive growth organically.</p>
+      <p><strong>What Makes YOLO Different:</strong> Community-first: The coin grows with the people, not behind closed doors. Culture over complexity—easy to understand, easy to join. Meme-native: Designed for virality, humor, and social engagement. Early-stage energy: Built for those who like being early and shaping the story.</p>
+    </div>
+
+    <!-- ROADMAP (full phases) -->
+    <div class="section-title">🛣️ Roadmap</div>
+    <div class="card">
+      <ul class="phase-list">
+        <li><strong>Phase 0: The Spark (Pre-Launch)</strong> — Define YOLO’s identity, tone, and meme culture. Launch core social channels (X, Telegram, Discord). Early community formation and organic conversations. Establish transparency around token basics and intent. No promises, just setting the stage.</li>
+        <li><strong>Phase 1: Launch & First Wave</strong> — Token launch with simple, fair structure. Website and basic brand assets live. Meme push across crypto Twitter. Community-led raids and engagement. Early holders shape the narrative organically. Focus: visibility, culture, shared excitement.</li>
+        <li><strong>Phase 2: Culture Lock-In</strong> — Regular meme contests and community highlights. Stronger Discord activity and community roles. Community feedback loops (what’s working, what’s not). Reinforcing YOLO as a recognizable meme brand. On-chain presence starts to feel alive.</li>
+        <li><strong>Phase 3: Expansion Through Participation</strong> — Community-led initiatives and ideas. Optional experiments like NFTs, events, or collaborations. Voting or informal consensus on future directions. Partnerships that make sense culturally, not just financially. Continued emphasis on transparency.</li>
+        <li><strong>Phase 4: Momentum & Evolution</strong> — Letting YOLO become what the community turns it into. Strong meme legacy across platforms. YOLO recognized as an internet-native culture token. New ideas tested openly and iterated together. Community ownership over narrative and direction. Staying adaptable as meme culture evolves.</li>
+      </ul>
+    </div>
+
+    <!-- TOKENOMICS (exact numbers) -->
+    <div class="section-title">📊 Tokenomics</div>
+    <div class="card">
+      <p style="font-size:1.3rem; margin-bottom:1rem;"><span class="highlight" style="color:#F4B400;">Total Supply:</span> 1,000,000,000 YOLO (fixed supply, no minting, no inflation)</p>
+      <div class="token-grid">
+        <div class="token-item"><span class="label">🔥 Liquidity Pool</span><div class="value">99.59%</div>995,900,000 YOLO</div>
+        <div class="token-item"><span class="label">🧑‍🌾 Community & Ops</span><div class="value">0.41%</div>4,100,000 YOLO</div>
+      </div>
+      <p class="token-note">Liquidity seeded directly into DEX, open access, no private allocation. Community portion used strictly for incentives, moderation, meme rewards, and coordination. No excess allocation, no silent selling. Distribution visible and accountable.</p>
+    </div>
+
+    <!-- LIVE CHART (JUPITER) -->
+    <div class="section-title">📈 Live Chart (Jupiter)</div>
+    <div class="chart-container">
+      <iframe src="https://jup.ag/tokens/BzfJKjaaWYp5XZ2MevJT95SWVoNvVwJLtJbbnpvRpump" title="YOLO live chart Jupiter"></iframe>
+    </div>
+
+    <!-- CONTRACT ADDRESS (CA) -->
+    <div class="section-title">🔗 Contract address</div>
+    <div class="ca-box">
+      <span class="ca-label">CA:</span>
+      <span class="ca-address" id="caAddress">BzfJKjaaWYp5XZ2MevJT95SWVoNvVwJLtJbbnpvRpump</span>
+      <button class="copy-btn" onclick="copyCA()"><i class="far fa-copy"></i> Copy</button>
+    </div>
+
+    <!-- BUY BUTTONS SECTION (dual) -->
+    <div class="section-title">🛒 Buy YOLO</div>
+    <div class="buy-section">
+      <a href="https://pump.fun/coin/BzfJKjaaWYp5XZ2MevJT95SWVoNvVwJLtJbbnpvRpump" target="_blank" class="buy-btn btn-pump"><i class="fas fa-rocket"></i> Pump.fun</a>
+      <a href="https://jup.ag/tokens/BzfJKjaaWYp5XZ2MevJT95SWVoNvVwJLtJbbnpvRpump" target="_blank" class="buy-btn btn-jup"><i class="fas fa-chart-line"></i> Jupiter</a>
+    </div>
+
+    <!-- SOCIAL MEDIA SECTION (full) classic bird, unified gold -->
+    <div class="section-title">🌐 Community</div>
+    <div class="social-block">
+      <a href="https://t.me/+Resml7ZJj3RkODNh" target="_blank" class="social-icon-large"><i class="fab fa-telegram-plane"></i></a>
+      <a href="https://x.com/Yolocryptotoken" target="_blank" class="social-icon-large"><i class="fab fa-twitter"></i></a>
+      <a href="https://discord.gg/bS9tkuTwS" target="_blank" class="social-icon-large"><i class="fab fa-discord"></i></a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© YOLO · built by the community · no false promises, just vibes & momentum.</p>
+    </footer>
+  </div>
+
+  <!-- TOGGLE CHATBOT (responsive toggle form) -->
+  <div class="chat-toggle-container">
+    <div class="chat-toggle-btn" id="chatToggleBtn"><i class="fas fa-comment-dots"></i></div>
+    <div class="chat-popup" id="chatPopup">
+      <div class="chat-header">
+        <span><i class="fas fa-robot"></i> YOLO assistant</span>
+        <i class="fas fa-times" id="closeChat" style="cursor:pointer;"></i>
+      </div>
+      <div class="chat-body" id="chatBody">
+        <div class="message bot-message">I have the full YOLO info: roadmap, tokenomics, CA, narrative, buy links, socials. Ask anything!</div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="Ask about YOLO...">
+        <button id="sendMsg"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // particles
+    (function() {
+      const particlesDiv = document.getElementById('particles');
+      for (let i=0; i<50; i++) {
+        let p = document.createElement('div');
+        p.className = 'particle';
+        let size = Math.random()*10+4;
+        p.style.width = size+'px'; p.style.height = size+'px';
+        p.style.left = Math.random()*100+'%';
+        p.style.animationDuration = (Math.random()*15+10)+'s';
+        p.style.animationDelay = Math.random()*10+'s';
+        p.style.background = `rgba(244, 180, 0, ${Math.random()*0.25})`;
+        particlesDiv.appendChild(p);
+      }
+    })();
+
+    // copy CA
+    window.copyCA = function() {
+      const addr = document.getElementById('caAddress').innerText;
+      navigator.clipboard.writeText(addr).then(() => {
+        alert('CA copied!');
+      });
+    };
+
+    // ---------- CHATBOT TOGGLE (full info) ----------
+    const toggleBtn = document.getElementById('chatToggleBtn');
+    const popup = document.getElementById('chatPopup');
+    const closeBtn = document.getElementById('closeChat');
+    const chatBody = document.getElementById('chatBody');
+    const userInput = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendMsg');
+
+    const projectInfo = `
+      YOLO roadmap: Phase 0 The Spark (Pre-Launch) identity, tone, meme culture. Launch X, Telegram, Discord. Phase 1 fair launch, website, raids. Phase 2 meme contests, Discord roles. Phase 3 community-led NFTs, events, partnerships. Phase 4 meme legacy, community ownership.
+      Tokenomics: total supply 1,000,000,000 fixed. LP 99.59% (995.9M), Community & Operations 0.41% (4.1M) for incentives, moderation. No minting.
+      Narrative: community-driven meme coin, bold action, internet culture. Simple, transparent, no false promises. Vision: meme brand across CT, Discord, on-chain. Mission: build engaged community, transparency.
+      CA: BzfJKjaaWYp5XZ2MevJT95SWVoNvVwJLtJbbnpvRpump
+      Buy: Pump.fun (https://pump.fun/coin/BzfJKjaaWYp5XZ2MevJT95SWVoNvVwJLtJbbnpvRpump) and Jupiter (https://jup.ag/tokens/BzfJKjaaWYp5XZ2MevJT95SWVoNvVwJLtJbbnpvRpump)
+      Socials: Telegram (https://t.me/+Resml7ZJj3RkODNh), X (https://x.com/Yolocryptotoken), Discord (https://discord.gg/bS9tkuTwS)
+      Theme colors: gold #F4B400, dark #0D0D0D, neon #00FF9C, orange #FF8C00. Fonts: headings Orbitron, body Poppins.
+    `;
+
+    function addMessage(text, sender) {
+      const msg = document.createElement('div');
+      msg.classList.add('message', sender === 'bot' ? 'bot-message' : 'user-message');
+      msg.innerText = text;
+      chatBody.appendChild(msg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function botReply(question) {
+      const q = question.toLowerCase();
+      if (q.includes('phase') || q.includes('roadmap')) return "Full roadmap: Phase0 (spark) social/identity, Phase1 launch/raids, Phase2 contests/roles, Phase3 community NFTs/partnerships, Phase4 legacy/ownership.";
+      if (q.includes('tokenomics') || q.includes('supply')) return "Total supply 1B fixed. LP 99.59% (995.9M), Community & Ops 0.41% (4.1M). No inflation, no silent selling.";
+      if (q.includes('narrative') || q.includes('vision')) return "Narrative: community meme coin, bold action, internet culture. Vision: meme brand across CT/Discord. Mission: engaged community, transparency.";
+      if (q.includes('ca') || q.includes('contract')) return "Contract: BzfJKjaaWYp5XZ2MevJT95SWVoNvVwJLtJbbnpvRpump";
+      if (q.includes('buy') || q.includes('pump') || q.includes('jupiter')) return "Buy on Pump.fun: https://pump.fun/coin/BzfJKjaaWYp5XZ2MevJT95SWVoNvVwJLtJbbnpvRpump  | Jupiter: https://jup.ag/tokens/BzfJKjaaWYp5XZ2MevJT95SWVoNvVwJLtJbbnpvRpump";
+      if (q.includes('telegram') || q.includes('discord') || q.includes('x') || q.includes('twitter') || q.includes('social')) return "Telegram: https://t.me/+Resml7ZJj3RkODNh , X (twitter): https://x.com/Yolocryptotoken , Discord: https://discord.gg/bS9tkuTwS";
+      return "I have complete info: " + projectInfo.substring(0,350) + "… ask me anything specific (roadmap, tokenomics, CA, buy links, socials).";
+    }
+
+    function handleSend() {
+      const text = userInput.value.trim();
+      if (!text) return;
+      addMessage(text, 'user');
+      userInput.value = '';
+      setTimeout(() => addMessage(botReply(text), 'bot'), 200);
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      popup.classList.toggle('show');
+    });
+    closeBtn.addEventListener('click', () => {
+      popup.classList.remove('show');
+    });
+    sendBtn.addEventListener('click', handleSend);
+    userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
+
+    // initial bot greeting
+    addMessage("I know everything about YOLO: roadmap phases, tokenomics, CA, narrative, buy links, socials. Ask away!", 'bot');
+  </script>
+</body>
+  </html>
